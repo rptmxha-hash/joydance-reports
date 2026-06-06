@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>조이댄스 인스타 분석 2026-06-07</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+     background:#0d0d1a;color:#dde;font-size:14px}
+.hdr{background:linear-gradient(135deg,#1a0a2e,#16213e);
+     padding:14px 14px 10px;border-bottom:3px solid #FF6B35}
+.hdr h1{font-size:16px;font-weight:700;color:#FF6B35;margin-bottom:2px}
+.hdr .meta{font-size:10px;color:#556}
+.tabs{display:flex;overflow-x:auto;background:#111126;
+      border-bottom:2px solid #222240;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;padding:10px 15px;font-size:12px;font-weight:600;
+     color:#666;background:none;border:none;cursor:pointer;
+     border-bottom:3px solid transparent;white-space:nowrap}
+.tab.on{color:#FF6B35;border-bottom-color:#FF6B35;background:#16162a}
+.pane{display:none}.pane.on{display:block}
+.wrap{padding:12px 12px 60px;max-width:480px;margin:0 auto}
+.alist{display:block}
+.ablock{background:#111126;border:1px solid #1e1e3a;border-radius:10px;
+        margin-bottom:14px;overflow:hidden}
+.prof-row{display:flex;gap:11px;padding:12px;border-bottom:1px solid #1a1a38;align-items:center}
+.prof-img-wrap{position:relative;width:50px;height:50px;flex-shrink:0;
+               display:flex;align-items:center;justify-content:center}
+.prof-img{width:50px;height:50px;border-radius:50%;object-fit:cover;
+          border:2px solid #FF6B35}
+.prof-img-wrap.no-thumb .prof-img{opacity:0;position:absolute}
+.prof-img-wrap .fallback-icon{display:none;width:50px;height:50px;border-radius:50%;
+  background:linear-gradient(135deg,#1a0a2e,#2a1050);border:2px solid #FF6B35;
+  font-size:20px;align-items:center;justify-content:center}
+.prof-img-wrap.no-thumb .fallback-icon{display:flex}
+.prof-info{flex:1;min-width:0}
+.prof-handle{font-size:13px;font-weight:700;display:flex;align-items:center;
+             gap:5px;flex-wrap:wrap;margin-bottom:2px;color:#fff}
+.prof-name{font-size:10px;color:#888;margin-bottom:5px;
+           white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:240px}
+.prof-stats{display:flex;flex-wrap:wrap;gap:4px}
+.prof-stats span{font-size:9px;color:#FF6B35;background:#1a0a1a;
+                 padding:2px 6px;border-radius:8px}
+.section-lbl{padding:7px 12px;font-size:10px;font-weight:600;
+             color:#A855F7;border-top:1px solid #1a1a38;background:#0f0f22}
+.jp-note{background:#1a1a00;border-left:3px solid #f59e0b;
+         padding:6px 10px;font-size:10px;color:#a0a050}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:8px}
+.pcard{background:#0d0d20;border:1px solid #1e1e38;border-radius:6px;
+       overflow:hidden;cursor:pointer}
+.pcard:active{opacity:.75}
+.pcard-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;
+                background:linear-gradient(135deg,#1a0a2e,#0d1525);
+                display:flex;align-items:center;justify-content:center}
+.pcard-img-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+.pcard-img-wrap.no-thumb img{opacity:0}
+.pcard-img-wrap .fallback-icon{font-size:24px;z-index:0;opacity:.5}
+.pcard-img-wrap:not(.no-thumb) .fallback-icon{display:none}
+.pcard-rank{position:absolute;top:3px;left:3px;background:rgba(255,107,53,.9);
+            color:#fff;font-size:8px;font-weight:700;padding:1px 4px;
+            border-radius:5px;z-index:2}
+.pcard-type{position:absolute;top:3px;right:3px;background:rgba(0,0,0,.65);
+            color:#fff;font-size:8px;padding:1px 3px;border-radius:4px;z-index:2}
+.pcard-meta{display:flex;justify-content:space-between;padding:3px 5px;font-size:8px}
+.pcard-eng{color:#FF6B9D;font-weight:600}
+.pcard-date{color:#555}
+.pcard-cap{padding:0 5px 5px;font-size:8px;color:#666;line-height:1.3;
+           overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.cmp-table{width:100%;border-collapse:collapse;font-size:11px}
+.cmp-table th{background:#1a1a38;color:#777;padding:7px 8px;
+              border-bottom:2px solid #2a2a50;white-space:nowrap;text-align:left}
+.cmp-table td{padding:7px 8px;border-bottom:1px solid #1a1a2e;vertical-align:middle;line-height:1.5}
+.cmp-table tr:hover td{background:#111126}
+.insight-item{display:flex;gap:8px;margin-bottom:10px;font-size:11px;
+              color:#bbb;line-height:1.6}
+.bench-block{background:#0f0f22;border:2px solid #FF6B35;border-radius:10px;
+             padding:13px;margin-bottom:13px}
+.bench-title{font-size:13px;font-weight:700;color:#FF6B35;margin-bottom:2px}
+.bench-sub{font-size:10px;color:#888;margin-bottom:8px}
+.bench-sec-title{font-size:10px;font-weight:700;color:#A855F7;margin:7px 0 4px}
+.bench-li{font-size:10px;color:#bbb;padding-left:10px;margin-bottom:3px;
+          position:relative;line-height:1.5}
+.bench-li::before{content:"•";position:absolute;left:0;color:#FF6B35}
+.bench-action{background:#1a0a0a;border-left:3px solid #FF6B35;padding:5px 8px;
+              font-size:10px;color:#FF8860;margin-bottom:3px;
+              border-radius:0 4px 4px 0;line-height:1.5}
+.footer{text-align:center;color:#333;font-size:10px;padding:14px}
+
+body{font-size:15px}
+.hdr h1{font-size:20px}
+.hdr .meta{font-size:12px}
+.tab{font-size:14px;padding:12px 22px}
+.wrap{max-width:1140px;padding:16px 16px 60px}
+.alist{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.alist .ablock{margin-bottom:0}
+.prof-handle{font-size:15px}
+.prof-name{font-size:12px;max-width:420px}
+.prof-stats span{font-size:11px}
+.section-lbl{font-size:12px}
+.jp-note{font-size:12px}
+.pcard-rank,.pcard-type{font-size:10px}
+.pcard-meta{font-size:11px;padding:4px 7px}
+.pcard-cap{font-size:10px;padding:0 7px 7px}
+.cmp-table{font-size:13px}
+.insight-item{font-size:13px}
+.bench-title{font-size:15px}
+.bench-sub,.bench-sec-title{font-size:12px}
+.bench-li,.bench-action{font-size:12px}
+</style>
+</head>
+<body>
+<div class='hdr'>
+  <h1>📊 조이댄스 인스타 경쟁 분석</h1>
+  <div class='meta'>2026-06-07 · 자사6 + 경쟁사4 · 30일 수집 / 최근 7일 TOP 3 · 🖥️ PC · [k-sol]</div>
+</div>
+<div class='tabs'>
+  <button class='tab on' onclick='showTab(this,"p-own")'>🧡 자사(6)</button>
+  <button class='tab' onclick='showTab(this,"p-comp")'>🟣 경쟁사(4)</button>
+  <button class='tab' onclick='showTab(this,"p-cmp")'>📊 비교</button>
+  <button class='tab' onclick='showTab(this,"p-bench")'>⭐ 벤치마킹</button>
+</div>
+<div id='p-own' class='pane on'><div class='wrap'><div class='alist'><div class='ablock'>
+  <div class='prof-row'>
+    <div class='prof-img-wrap'>
+      <img src='https://scontent-lga3-3.cdninstagram.com/v/t51.2885-19/377566176_304768232165234_3630115788520558173_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=scontent-lga3-3.cdninstagram.com&amp;_nc_cat=102&amp;_nc_oc=Q6cZ2gF8j0Q3wq6w3bGm9Nud5Qipqhq653YaO5p-yUeWYERUpfT5FmdmnDK2a5udZVc_3Jk&amp;_nc_ohc=eNURwfB8ifcQ7kNvwFjyFmW&amp;_nc_gid=TrHjKth3J3KY1EAtPc8xUg&amp;edm=AOQ1c0wBAAAA&amp;ccb=7-5&amp;oh=00_Af-_uRBkFEdMtnXCkws2KcRqACv4S-uGtv1fFzmJ5DYUgg&amp;oe=6A2A3A56&amp;_nc_sid=8b3546' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" class='prof-img'>
+      <div class='fallback-icon' style='font-size:20px'>👤</div>
+    </div>
+    <div class='prof-info'>
+      <div class='prof-handle'><span style='color:#FF6B35;font-size:9px'>🧡 자사</span>&nbsp;<strong>@joydancemusic_seoul</strong>&nbsp;<span style='background:#FF6B35;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>C</span></div>
+      <div class='prof-name'>조이댄스 뮤직아카데미 서울강남점│강남오디션학원·강남댄스학원·강남보컬학원</div>
+      <div class='prof-stats'>
+        <span>👥 4.7천</span>
+        <span>참여율 0.65%</span>
+        <span>7일 0개</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class='section-lbl'>🏆 인기 TOP 3 (최근 7일)</div>
+  <div style='padding:12px;color:#555;font-size:11px;text-align:center'>최근 7일 게시물 없음</div>
+</div><div class='ablock'>
+  <div class='prof-row'>
+    <div class='prof-img-wrap'>
+      <img src='https://scontent-atl3-3.cdninstagram.com/v/t51.2885-19/449653663_362559520211011_4619977973767551153_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=scontent-atl3-3.cdninstagram.com&amp;_nc_cat=107&amp;_nc_oc=Q6cZ2gGQPdi3gNLF_tiegKzrOZto7pkAlnaZieYi1w-PCRI6s04mtteveluwtmlClG0TLSY&amp;_nc_ohc=AdNn28ZBPPYQ7kNvwELnjbq&amp;_nc_gid=9D6cgkj1udC-vIxqmbPjnA&amp;edm=AOQ1c0wBAAAA&amp;ccb=7-5&amp;oh=00_Af_dTyDPbs4ZSvrSE_lKG11tJpseByM_uHBp391zMpaZgg&amp;oe=6A2A17FA&amp;_nc_sid=8b3546' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" class='prof-img'>
+      <div class='fallback-icon' style='font-size:20px'>👤</div>
+    </div>
+    <div class='prof-info'>
+      <div class='prof-handle'><span style='color:#FF6B35;font-size:9px'>🧡 자사</span>&nbsp;<strong>@joydance_japan</strong>&nbsp;<span style='background:#10b981;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>A</span></div>
+      <div class='prof-name'>JOY DANCE TOKYO・OSAKA</div>
+      <div class='prof-stats'>
+        <span>👥 4.0천</span>
+        <span>참여율 11.58%</span>
+        <span>7일 0개</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class='section-lbl'>🏆 인기 TOP 3 (최근 7일)</div>
+  <div style='padding:12px;color:#555;font-size:11px;text-align:center'>최근 7일 게시물 없음</div>
+</div><div class='ablock'>
+  <div class='prof-row'>
+    <div class='prof-img-wrap'>
+      <img src='https://scontent-lga3-1.cdninstagram.com/v/t51.2885-19/359850091_235630446031275_5814635561394994477_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby44OTkuYzIifQ&amp;_nc_ht=scontent-lga3-1.cdninstagram.com&amp;_nc_cat=103&amp;_nc_oc=Q6cZ2gFkqnipAuvBGIceNtWRrKh3Jm96dH67bE0bn4g6phP2qJqbk43cKrw3gXfhRyKh_7g&amp;_nc_ohc=vedxi7x8Qa4Q7kNvwFqbYzE&amp;_nc_gid=bW6pRApb4kcFYnYBw_zn0g&amp;edm=AOQ1c0wBAAAA&amp;ccb=7-5&amp;oh=00_Af-uydGsIGA8tm0FcsP4MZHH1dWf0C0Q9xeNyHHnpWnzcw&amp;oe=6A2A2061&amp;_nc_sid=8b3546' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" class='prof-img'>
+      <div class='fallback-icon' style='font-size:20px'>👤</div>
+    </div>
+    <div class='prof-info'>
+      <div class='prof-handle'><span style='color:#FF6B35;font-size:9px'>🧡 자사</span>&nbsp;<strong>@joydancemusic_ca</strong>&nbsp;<span style='background:#10b981;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>A</span></div>
+      <div class='prof-name'>조이댄스 뮤직아카데미 천안점│천안오디션학원·천안댄스학원·천안보컬학원</div>
+      <div class='prof-stats'>
+        <span>👥 853</span>
+        <span>참여율 3.36%</span>
+        <span>7일 3개</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class='section-lbl'>🏆 인기 TOP 3 (최근 7일)</div>
+  <div class='pgrid'><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZHc5KNzHvN/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://scontent-lax3-2.cdninstagram.com/v/t51.82787-15/714423458_18361087978234579_2033011713698550137_n.jpg?stp=dst-jpg_e15_tt6&amp;_nc_ht=scontent-lax3-2.cdninstagram.com&amp;_nc_cat=107&amp;_nc_oc=Q6cZ2gE3HvYt_YJPJKKNhvOBIiWObnizbGMjueOO_RfMmKHXTTA-_fUikrBYzWnqllk-5o8&amp;_nc_ohc=8JlEODK1tmkQ7kNvwHZxMFQ&amp;_nc_gid=JOgHVyNOuBT_zUepoeopFQ&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af-lf72QTAaFruJ6jo0FTGeUyx-okSmMz_DhjVhLwPuF8Q&amp;oe=6A2A0A5C&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>🎬</div>
+    <span class='pcard-rank'>#1</span>
+    <span class='pcard-type'>🎬</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤88 💬7</span><span class='pcard-date'>06-03</span></div>
+  <div class='pcard-cap'>#천안오디션학원 #천안댄스학원 #천안보컬학원 #hypnotizd #xg   [​조이댄스 뮤직아카데미 천안점]</div>
+</div><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZHcq4JTqEa/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/714611279_18361087861234579_5239466864515189662_n.jpg?stp=dst-jpg_e15_tt6&amp;_nc_ht=scontent-iad6-1.cdninstagram.com&amp;_nc_cat=107&amp;_nc_oc=Q6cZ2gEk16NjXTlaC2a5uWtDaIgm1bdBL7Zsz2xUNn6HMQf0fXZp2kGRcpGnmhPfXLlEkTs&amp;_nc_ohc=9Ww2x-J5-NYQ7kNvwH86xdP&amp;_nc_gid=EOVVY7__-v8nEDC-SYT84Q&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af_1nPFLEN16xuxaNwz8XK7exU8vcfvP-QPhs3o1vIThqw&amp;oe=6A2A0E0F&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>🎬</div>
+    <span class='pcard-rank'>#2</span>
+    <span class='pcard-type'>🎬</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤64 💬1</span><span class='pcard-date'>06-03</span></div>
+  <div class='pcard-cap'>#천안오디션학원 #천안댄스학원 #천안보컬학원 #hypnotizd #xg   [​조이댄스 뮤직아카데미 천안점]</div>
+</div><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZHdDQST2QN/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://scontent-sjc6-1.cdninstagram.com/v/t51.82787-15/715849991_18361088077234579_1243543822762125379_n.jpg?stp=dst-jpg_e15_tt6&amp;_nc_ht=scontent-sjc6-1.cdninstagram.com&amp;_nc_cat=107&amp;_nc_oc=Q6cZ2gF1Qt8m5yDvFohhv5na4UTPQpAj-5wTDlWw2iyd-EYmZ7HlEIt8DVNwN6iixgMtcCw&amp;_nc_ohc=MeK9jBnW1N4Q7kNvwFBiKiK&amp;_nc_gid=0dR6ivx7jrwnD_BRuFKl0g&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af82drGgiwzyj41JA98IOj5FKLfkrKl8QCrdbYZsbMCN5w&amp;oe=6A2A367A&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>🎬</div>
+    <span class='pcard-rank'>#3</span>
+    <span class='pcard-type'>🎬</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤53 💬1</span><span class='pcard-date'>06-03</span></div>
+  <div class='pcard-cap'>#천안오디션학원 #천안댄스학원 #천안보컬학원 #hypnotizd #xg   [​조이댄스 뮤직아카데미 천안점]</div>
+</div></div>
+</div><div class='ablock'>
+  <div class='prof-row'>
+    <div class='prof-img-wrap'>
+      <img src='https://scontent-xxc1-1.cdninstagram.com/v/t51.2885-19/377229410_551206817141335_4111493063531100198_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=scontent-xxc1-1.cdninstagram.com&amp;_nc_cat=107&amp;_nc_oc=Q6cZ2gHrLVKmkAVwFF4DKu5-7svYEAJ8rwMO8tX1euR7TreggY7pQe-BwF-mUTaTFEbj3Ng&amp;_nc_ohc=rk0znUke2_oQ7kNvwG8MRAd&amp;_nc_gid=cD3jap2k5UhqzuoNQSz30g&amp;edm=AOQ1c0wBAAAA&amp;ccb=7-5&amp;oh=00_Af_J9kgShd7vfj-23Cl6q-jq4vFXJZowiSXox4Bx1U-j2w&amp;oe=6A2A099C&amp;_nc_sid=8b3546' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" class='prof-img'>
+      <div class='fallback-icon' style='font-size:20px'>👤</div>
+    </div>
+    <div class='prof-info'>
+      <div class='prof-handle'><span style='color:#FF6B35;font-size:9px'>🧡 자사</span>&nbsp;<strong>@joydancemusic_mp</strong>&nbsp;<span style='background:#f59e0b;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>B</span></div>
+      <div class='prof-name'>조이댄스 뮤직아카데미 목포점 | 목포오디션학원·목포댄스학원·목포보컬학원</div>
+      <div class='prof-stats'>
+        <span>👥 3.1천</span>
+        <span>참여율 2.06%</span>
+        <span>7일 3개</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class='section-lbl'>🏆 인기 TOP 3 (최근 7일)</div>
+  <div class='pgrid'><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZCbl_ixpQT/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://scontent-lga3-1.cdninstagram.com/v/t51.82787-15/712045277_18554650726066919_4526216514169027365_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&amp;_nc_ht=scontent-lga3-1.cdninstagram.com&amp;_nc_cat=111&amp;_nc_oc=Q6cZ2gEDK4xXWu_kC73tV-ySA95eSCPmxhFDz2L48cB_eNAX7IlEZLMQl6vWmCSV1FdYFGg&amp;_nc_ohc=Q4AmArAJCm0Q7kNvwGVScfj&amp;_nc_gid=G_lyTS0Yn-BqACglyK_aRw&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af_aYhHFpPRvPMdzENAkqT6oumGS031dpg2m7V54KgvB9g&amp;oe=6A2A3D52&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>🎬</div>
+    <span class='pcard-rank'>#1</span>
+    <span class='pcard-type'>🎬</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤– 💬1</span><span class='pcard-date'>06-01</span></div>
+  <div class='pcard-cap'>조이댄스뮤직아카데미  오디션 전문반 트레이닝 기획사 계약배출 연예인  서아 소속 @triplescosmos </div>
+</div><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZCa4HkRnI6/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://scontent-hou1-1.cdninstagram.com/v/t51.82787-15/711720474_18554648863066919_3457325308863448797_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&amp;_nc_ht=scontent-hou1-1.cdninstagram.com&amp;_nc_cat=111&amp;_nc_oc=Q6cZ2gFUhe0kSUpbzF_1hLePG58JF8dfa3qiOzh0U4eHRNRuPGmS987grQgIa5hamrOW8tQ&amp;_nc_ohc=zl2EMX00J_oQ7kNvwF9v9dp&amp;_nc_gid=xQqyk-8RrDWiamE9EsMG_g&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af9HNnoIjL6cmtTShcRanbFp3M7EstemrJ8owLMaeHTatg&amp;oe=6A2A23B6&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>🖼️</div>
+    <span class='pcard-rank'>#2</span>
+    <span class='pcard-type'>🖼️</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤– 💬0</span><span class='pcard-date'>06-01</span></div>
+  <div class='pcard-cap'>✨AUDITION  조이댄스뮤직아카데미  오디션 전문반 트레이닝 기획사 계약배출 연예인  서아 소속 트리플에</div>
+</div><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZCcKVBx3dk/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://scontent-mia3-1.cdninstagram.com/v/t51.82787-15/712065491_18554650924066919_7094007696731326155_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&amp;_nc_ht=scontent-mia3-1.cdninstagram.com&amp;_nc_cat=111&amp;_nc_oc=Q6cZ2gFdXpdWPo58K7NEPz5YQSE67qYFym7hX5wi2mzxM1QSDCJoIXS2T8Uwss_H9gCRSNE&amp;_nc_ohc=J7JXcFUu1fIQ7kNvwGskmAq&amp;_nc_gid=v09iWCpx9e-hjMWUarKRIA&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af-4O58vq9i_vhnsTKcaJBbzIwCZRj0QM1qZ0d6Gz2xtdQ&amp;oe=6A2A1278&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>🖼️</div>
+    <span class='pcard-rank'>#3</span>
+    <span class='pcard-type'>🖼️</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤– 💬0</span><span class='pcard-date'>06-01</span></div>
+  <div class='pcard-cap'>✨AUDITION  조이댄스뮤직아카데미  오디션 전문반 트레이닝 기획사 계약배출 연예인  서아 소속 트리플에</div>
+</div></div>
+</div><div class='ablock'>
+  <div class='prof-row'>
+    <div class='prof-img-wrap'>
+      <img src='https://scontent-lax7-1.cdninstagram.com/v/t51.2885-19/375438363_623587279859465_6405679902738308519_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=scontent-lax7-1.cdninstagram.com&amp;_nc_cat=105&amp;_nc_oc=Q6cZ2gEkocT14eYvhRR26TFBLTZOuRaKElukv8iz0U7oQGoR45VcfJCKI__Gp5RWaC7jR3k&amp;_nc_ohc=4EDFRyOjCu0Q7kNvwF9I98E&amp;_nc_gid=G2w_kQiFyf89EGbZ1jrh-A&amp;edm=AOQ1c0wBAAAA&amp;ccb=7-5&amp;oh=00_Af9GDCYySWh0ZVQjvKtofDp0Itxf4y1rKwZPQbUIJsvrtw&amp;oe=6A2A3A3B&amp;_nc_sid=8b3546' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" class='prof-img'>
+      <div class='fallback-icon' style='font-size:20px'>👤</div>
+    </div>
+    <div class='prof-info'>
+      <div class='prof-handle'><span style='color:#FF6B35;font-size:9px'>🧡 자사</span>&nbsp;<strong>@joydancemusic_gj</strong>&nbsp;<span style='background:#FF6B35;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>C</span></div>
+      <div class='prof-name'>조이댄스 뮤직아카데미 광주점│광주오디션학원·광주댄스학원·광주보컬학원</div>
+      <div class='prof-stats'>
+        <span>👥 1.6천</span>
+        <span>참여율 0.65%</span>
+        <span>7일 10개</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class='section-lbl'>🏆 인기 TOP 3 (최근 7일)</div>
+  <div class='pgrid'><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZFV5nHBhMS/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://scontent-lga3-2.cdninstagram.com/v/t51.82787-15/711869121_18412242745195740_7201238239099448144_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&amp;_nc_ht=scontent-lga3-2.cdninstagram.com&amp;_nc_cat=100&amp;_nc_oc=Q6cZ2gF-q8LaqUis656NIUBC_Y8HEDFxaF7NU3ty2RiUxaJznxa83PYUe_nk-MivU49ne64&amp;_nc_ohc=A-LfFrh1LV4Q7kNvwE1RTe8&amp;_nc_gid=jrsK5BU6k_7yL_5mU54Jag&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af8W2aMFa70-B-7Cn6JkecGvkX5YTZJWu1FUdDSUGHtvOw&amp;oe=6A2A1F09&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>🎬</div>
+    <span class='pcard-rank'>#1</span>
+    <span class='pcard-type'>🎬</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤54 💬0</span><span class='pcard-date'>06-02</span></div>
+  <div class='pcard-cap'>조이댄스뮤직아카데미  오디션 전문반 트레이닝  기획사 계약배출 연예인  서아 소속 @triplescosmos</div>
+</div><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZFTXHzhK3U/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://scontent-den2-1.cdninstagram.com/v/t51.82787-15/713683916_18412239955195740_3022746946709270380_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&amp;_nc_ht=scontent-den2-1.cdninstagram.com&amp;_nc_cat=100&amp;_nc_oc=Q6cZ2gExHZsVNLdMvJ4jT-nI7o3BlL_2BTr7l6ySuoOYB5I0yKGDUmOk4jTTV8Qqz9sOLu8&amp;_nc_ohc=HGRy1xDeoL4Q7kNvwFjNSrp&amp;_nc_gid=m-pRL-8gR_x63tbYwdHDFQ&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af-qXwPdC-SmAf6sGOiNYYSLxBM14KaZi4RO1zUTFiej_Q&amp;oe=6A2A11AC&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>🎬</div>
+    <span class='pcard-rank'>#2</span>
+    <span class='pcard-type'>🎬</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤50 💬0</span><span class='pcard-date'>06-02</span></div>
+  <div class='pcard-cap'>아이돌 지망생이 추는 KISS OF LIFE - Who is she  KISS OF LIFE - Who is</div>
+</div><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZFStnNlIEp/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/713264856_18412239085195740_4396114338696288366_n.jpg?stp=dst-jpg_e15_fr_p1080x1080_tt6&amp;_nc_ht=scontent-iad6-1.cdninstagram.com&amp;_nc_cat=100&amp;_nc_oc=Q6cZ2gFKoDWU3ZM3xChVUcATAwpL0wq3Uj1-HCxBDNrM3U74MnqAPMV4YrpcpOkd5Nw_AAg&amp;_nc_ohc=2eYWSyUBdvoQ7kNvwF1nzR1&amp;_nc_gid=-IAygML97nZtVg5-l2tc0Q&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af_DJ4JPEB-DA72VOm-NCPye9G28ScMYmRtvFlxfJnBPow&amp;oe=6A2A1CD0&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>➕</div>
+    <span class='pcard-rank'>#3</span>
+    <span class='pcard-type'>➕</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤14 💬0</span><span class='pcard-date'>06-02</span></div>
+  <div class='pcard-cap'>[조이댄스뮤직 아카데미]  조이댄스 뮤직아카데미 5월 오디션 합격자입니다🤍 합격을 축하드립니다🎉  ★국내 계</div>
+</div></div>
+</div><div class='ablock'>
+  <div class='prof-row'>
+    <div class='prof-img-wrap'>
+      <img src='https://scontent-dfw5-2.cdninstagram.com/v/t51.2885-19/375297543_312711348104611_2946224097612328654_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=scontent-dfw5-2.cdninstagram.com&amp;_nc_cat=107&amp;_nc_oc=Q6cZ2gG0M2Xfe3LqrFIbQOVVXrXn5crJOjWepOBL_YXySq2RitMNG6vjLwr4yCC0gA9vTK4&amp;_nc_ohc=i7ZeKsOhn-oQ7kNvwFa4xG-&amp;_nc_gid=WQF9e369VTn1UIo0EzNtDw&amp;edm=AOQ1c0wBAAAA&amp;ccb=7-5&amp;oh=00_Af8ryf0IH2NHEfaqGl_-z9UnGTBW1yYF5HVJd6HGzPdGNw&amp;oe=6A2A2DF4&amp;_nc_sid=8b3546' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" class='prof-img'>
+      <div class='fallback-icon' style='font-size:20px'>👤</div>
+    </div>
+    <div class='prof-info'>
+      <div class='prof-handle'><span style='color:#FF6B35;font-size:9px'>🧡 자사</span>&nbsp;<strong>@joydancemusic_kh</strong>&nbsp;<span style='background:#10b981;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>A</span></div>
+      <div class='prof-name'>김해댄스 김해보컬 장유댄스 장유보컬 율하댄스 율하보컬ㅣ조이댄스뮤직 김해점</div>
+      <div class='prof-stats'>
+        <span>👥 2.7천</span>
+        <span>참여율 3.23%</span>
+        <span>7일 7개</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class='section-lbl'>🏆 인기 TOP 3 (최근 7일)</div>
+  <div class='pgrid'><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZKeAfWTKPs/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://scontent-atl3-2.cdninstagram.com/v/t51.71878-15/714720682_4437796803204986_2143959972277745120_n.jpg?stp=dst-jpg_e15_tt6&amp;_nc_ht=scontent-atl3-2.cdninstagram.com&amp;_nc_cat=102&amp;_nc_oc=Q6cZ2gHMigwMiyQZByW1nMGqt1JiYCGDeAPu6CVwhBURKM_YOY_bkkw5qtn8FysWH8uUB10&amp;_nc_ohc=RkWJT-WlVW0Q7kNvwG0VQmS&amp;_nc_gid=zIeR-C_X_k0L8qu0RIEvww&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af8-EXzRd5kYc2BORk8clnHdsgINO0vUPb7IDFd-UTmOaQ&amp;oe=6A2A0F70&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>🎬</div>
+    <span class='pcard-rank'>#1</span>
+    <span class='pcard-type'>🎬</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤85 💬1</span><span class='pcard-date'>06-04</span></div>
+  <div class='pcard-cap'>완벽하지 않아도 괜찮아요. 좋아하는 노래로 가볍게 시작하는 목요일 취미반 :)  이번 수업은 SEVENTEE</div>
+</div><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZMumV2z6Gy/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://scontent-ord5-3.cdninstagram.com/v/t51.82787-15/715910346_17976377700030190_7080817618337303120_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&amp;_nc_ht=scontent-ord5-3.cdninstagram.com&amp;_nc_cat=110&amp;_nc_oc=Q6cZ2gGhUqvrloOcY25v5IZzPQmY5ZSqDBISnYzYHmBpuiuDK2TLOC0JWybIBOZ4CKJx7bg&amp;_nc_ohc=d4698vfp4FAQ7kNvwEy6mC_&amp;_nc_gid=hOMkWXDkeazv06jXCytwGA&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af_5Vk9awewdgZ-TkAqTlvuSWpngjrSmAJmf_i51EiP8CQ&amp;oe=6A2A3B4D&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>🖼️</div>
+    <span class='pcard-rank'>#2</span>
+    <span class='pcard-type'>🖼️</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤33 💬0</span><span class='pcard-date'>06-05</span></div>
+  <div class='pcard-cap'>#AUDITION  조이댄스뮤직아카데미 김해점  #SM 내방오디션 1차 합격 소식  김* * ,  최 * *</div>
+</div><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZKLEz9Tt3f/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://scontent-lax3-1.cdninstagram.com/v/t51.82787-15/714759332_17976237015030190_1682707819730204786_n.jpg?stp=dst-jpg_e15_tt6&amp;_nc_ht=scontent-lax3-1.cdninstagram.com&amp;_nc_cat=110&amp;_nc_oc=Q6cZ2gHgkqAHjVOfbJZqJUqAOi-pCctjh8kYb3GEPIvWs34lpeC6BrAfe48qVaYghXpSQho&amp;_nc_ohc=Cc2NvVVw2msQ7kNvwG-vwhL&amp;_nc_gid=kyZ3Al4uQkAZoOwsK_rcDQ&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af8vUYtJw4P1y33sNj3o9BWOisW2tHH3Kzd54Y8gJPta4w&amp;oe=6A2A2271&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>🖼️</div>
+    <span class='pcard-rank'>#3</span>
+    <span class='pcard-type'>🖼️</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤13 💬0</span><span class='pcard-date'>06-04</span></div>
+  <div class='pcard-cap'>📢 아이돌 서바이벌 프로그램 내방오디션 안내 📢  아이돌 서바이벌 프로그램 내방오디션이 조이댄스뮤직아카데미에</div>
+</div></div>
+</div></div></div></div>
+<div id='p-comp' class='pane'><div class='wrap'><div class='alist'><div class='ablock'>
+  <div class='prof-row'>
+    <div class='prof-img-wrap'>
+      <img src='https://scontent-ord5-3.cdninstagram.com/v/t51.2885-19/37023298_631548820563247_7910055107427827712_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby40MzAuYzIifQ&amp;_nc_ht=scontent-ord5-3.cdninstagram.com&amp;_nc_cat=107&amp;_nc_oc=Q6cZ2gFzgiNz-vlbzCE5Crdek1vNPqadxWHV2ImR16zqmrq1Uzezlwyr9aJj5tzrz8Qh3bw&amp;_nc_ohc=5naAGzYxwDsQ7kNvwGrHbE7&amp;_nc_gid=1Nrdh7qtnbqdKuVdheKkiQ&amp;edm=AOQ1c0wBAAAA&amp;ccb=7-5&amp;oh=00_Af9uAycLO6QwtZo7CAARLSBsIWiY8XluDiBFfJxiNuP7KA&amp;oe=6A2A0E11&amp;_nc_sid=8b3546' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" class='prof-img'>
+      <div class='fallback-icon' style='font-size:20px'>👤</div>
+    </div>
+    <div class='prof-info'>
+      <div class='prof-handle'><span style='color:#A855F7;font-size:9px'>🟣 경쟁</span>&nbsp;<strong>@flat9_official</strong>&nbsp;<span style='background:#FF6B35;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>C</span></div>
+      <div class='prof-name'>댄스학원·보컬학원 | FLAT9 | 플랫나인</div>
+      <div class='prof-stats'>
+        <span>👥 6.6천</span>
+        <span>참여율 0.53%</span>
+        <span>7일 9개</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class='section-lbl'>🏆 인기 TOP 3 (최근 7일)</div>
+  <div class='pgrid'><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZK2DBigUSu/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://scontent-hou1-1.cdninstagram.com/v/t51.82787-15/714774483_18319748521273921_2024533198221179549_n.jpg?stp=dst-jpg_e15_fr_p1080x1080_tt6&amp;_nc_ht=scontent-hou1-1.cdninstagram.com&amp;_nc_cat=101&amp;_nc_oc=Q6cZ2gE1RahF4W4Falory2hvPsqpnZkv_tC8AE6tjKCznRyXgscCINFylDVL766v-vHvB70&amp;_nc_ohc=O4DZGAQIwqEQ7kNvwEd7boY&amp;_nc_gid=3Vqr5kMXYvYzLMlFbqsisQ&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af_z-ocS-k0gtAMD78QV-Fu2FszwoEFeXSKGI0JcSf595A&amp;oe=6A2A253F&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>➕</div>
+    <span class='pcard-rank'>#1</span>
+    <span class='pcard-type'>➕</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤149 💬9</span><span class='pcard-date'>06-04</span></div>
+  <div class='pcard-cap'>🏆기획사 최종합격 영상🏆  기획사에 최종 합격한 플랫나인 오디션반 원생의 영상입니다.  ▫▫▫▫▫▫▫▫▫▫▫</div>
+</div><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZK1chtAQmD/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://instagram.fbis1-1.fna.fbcdn.net/v/t51.82787-15/713763895_18319747756273921_14095204660259294_n.jpg?stp=dst-jpg_e15_fr_p1080x1080_tt6&amp;_nc_ht=instagram.fbis1-1.fna.fbcdn.net&amp;_nc_cat=101&amp;_nc_oc=Q6cZ2gFdDrWWVUhXzzJWMkb36TwRhH235-y4Dlz-noR7Iv7XjmWGfDmYxQRGDImry_yWkog&amp;_nc_ohc=pcayZagIbXEQ7kNvwGRdKkE&amp;_nc_gid=fliNsk7_5PKxUr4QNmU9kw&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af9Myjo7vaDkmsaf5JgZnywz-8D90-1TTb64LDqTfrZQiA&amp;oe=6A2A3267&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>➕</div>
+    <span class='pcard-rank'>#2</span>
+    <span class='pcard-type'>➕</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤87 💬0</span><span class='pcard-date'>06-04</span></div>
+  <div class='pcard-cap'>🏆초대형 기획사 2곳을 합격한 영상🏆  초대형 기획사 2곳에 동시 합격한 플랫나인 오디션반 원생의 영상입니다</div>
+</div><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZK2NcxAVnW/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://scontent-sea1-1.cdninstagram.com/v/t51.82787-15/714223563_18319748872273921_7228234421015732861_n.jpg?stp=dst-jpg_e15_fr_p1080x1080_tt6&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;_nc_cat=101&amp;_nc_oc=Q6cZ2gGo0E3BPFECByFR3WFVboVZ9wysslNPplewB2d_mjrY1mW50AAOqU255LYJmsvHLEU&amp;_nc_ohc=ItMziddOtz4Q7kNvwH4EP2C&amp;_nc_gid=YCfjmXM8tIIlx3KuMjq5ew&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af9hN2m_8y9bNFDIErLOr1fMhY_S0um1VPu_q-CVVN4k_Q&amp;oe=6A2A0ECF&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>➕</div>
+    <span class='pcard-rank'>#3</span>
+    <span class='pcard-type'>➕</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤62 💬0</span><span class='pcard-date'>06-04</span></div>
+  <div class='pcard-cap'>🏆14년생, 초대형기획사 보컬로 합격🏆  플랫나인 오디션반 키즈 원생이 초대형 기획사에 합격한 보컬 영상입니</div>
+</div></div>
+</div><div class='ablock'>
+  <div class='prof-row'>
+    <div class='prof-img-wrap'>
+      <img src='https://scontent-lax3-1.cdninstagram.com/v/t51.2885-19/412306428_886578919457024_3848412701623449893_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4zODEuYzIifQ&amp;_nc_ht=scontent-lax3-1.cdninstagram.com&amp;_nc_cat=108&amp;_nc_oc=Q6cZ2gEczVXJXk2gNmRfZUjNd2TucnLmUr5SV1WLNpD4FrTBB1wt7bYg4VgVSonSQlYGsyU&amp;_nc_ohc=bU74kfj7pcsQ7kNvwE4zFrT&amp;_nc_gid=7YNmpTqVjq9hQz-r4yOiUA&amp;edm=AOQ1c0wBAAAA&amp;ccb=7-5&amp;oh=00_Af-MSZmzwLmRxxc0zMkLn1QsH3iAWh1eJ7jCSWH2RGNkZA&amp;oe=6A2A1828&amp;_nc_sid=8b3546' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" class='prof-img'>
+      <div class='fallback-icon' style='font-size:20px'>👤</div>
+    </div>
+    <div class='prof-info'>
+      <div class='prof-handle'><span style='color:#A855F7;font-size:9px'>🟣 경쟁</span>&nbsp;<strong>@mudoctor_official</strong>&nbsp;<span style='background:#FF6B35;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>C</span></div>
+      <div class='prof-name'>뮤닥터아카데미 강남본원 | 오디션학원</div>
+      <div class='prof-stats'>
+        <span>👥 1.2만</span>
+        <span>참여율 0.90%</span>
+        <span>7일 0개</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class='section-lbl'>🏆 인기 TOP 3 (최근 7일)</div>
+  <div style='padding:12px;color:#555;font-size:11px;text-align:center'>최근 7일 게시물 없음</div>
+</div><div class='ablock'>
+  <div class='prof-row'>
+    <div class='prof-img-wrap'>
+      <img src='https://scontent-sea5-1.cdninstagram.com/v/t51.82787-19/649686818_17942996784136222_2794641181862163717_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4zMjAuYzIifQ&amp;_nc_ht=scontent-sea5-1.cdninstagram.com&amp;_nc_cat=110&amp;_nc_oc=Q6cZ2gFocMBkVZbggSz0PP0DuLG1-YlEG33UypvCzgOVzymE2mBCwq_mUtM44NNnb4opuF8&amp;_nc_ohc=lCY0jlYYhfIQ7kNvwFawCCJ&amp;_nc_gid=DBjv8Z45W7nvuPQcNlwnIg&amp;edm=AOQ1c0wBAAAA&amp;ccb=7-5&amp;oh=00_Af9uANl8RoF4VddXemM4GeTQGssCEZKPxNWjVkkH-lGcbQ&amp;oe=6A2A174B&amp;_nc_sid=8b3546' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" class='prof-img'>
+      <div class='fallback-icon' style='font-size:20px'>👤</div>
+    </div>
+    <div class='prof-info'>
+      <div class='prof-handle'><span style='color:#A855F7;font-size:9px'>🟣 경쟁</span>&nbsp;<strong>@pivot410studio_bangbae</strong>&nbsp;<span style='background:#ef4444;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>D</span></div>
+      <div class='prof-name'>피봇스튜디오 방배점 - KPOP 아이돌&amp;댄서 오디션 아카데미</div>
+      <div class='prof-stats'>
+        <span>👥 13.5만</span>
+        <span>참여율 0.02%</span>
+        <span>7일 0개</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class='section-lbl'>🏆 인기 TOP 3 (최근 7일)</div>
+  <div style='padding:12px;color:#555;font-size:11px;text-align:center'>최근 7일 게시물 없음</div>
+</div><div class='ablock'>
+  <div class='prof-row'>
+    <div class='prof-img-wrap'>
+      <img src='https://scontent-atl3-3.cdninstagram.com/v/t51.82787-19/683667279_18062056724702820_8036066504733585559_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=scontent-atl3-3.cdninstagram.com&amp;_nc_cat=100&amp;_nc_oc=Q6cZ2gHA89roQcK1-YO_ppCOX_sgsrj7Sk-CsMAQ4ubxYSmCQCmdRPmIY2NG49_kauee8YQ&amp;_nc_ohc=0gsAteZyrVsQ7kNvwGeMYJw&amp;_nc_gid=Amo9XVoQ6Xu9Jjx-kbK18g&amp;edm=AOQ1c0wBAAAA&amp;ccb=7-5&amp;oh=00_Af-oFlrfVTfFfKg8s-O57Xl0wm6AJ6h3oqY0ucGGuhYwYA&amp;oe=6A2A25C5&amp;_nc_sid=8b3546' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" class='prof-img'>
+      <div class='fallback-icon' style='font-size:20px'>👤</div>
+    </div>
+    <div class='prof-info'>
+      <div class='prof-handle'><span style='color:#A855F7;font-size:9px'>🟣 경쟁</span>&nbsp;<strong>@onmusic_audition</strong>&nbsp;<span style='background:#FF6B35;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>C</span></div>
+      <div class='prof-name'>온뮤직 강남본점I 오디션학원 I 보컬학원ㅣ댄스학원</div>
+      <div class='prof-stats'>
+        <span>👥 4.4천</span>
+        <span>참여율 0.71%</span>
+        <span>7일 9개</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class='section-lbl'>🏆 인기 TOP 3 (최근 7일)</div>
+  <div class='pgrid'><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZEuf2BAMr2/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://instagram.fhsv1-1.fna.fbcdn.net/v/t51.82787-15/713405082_18066972830702820_1793304243873808965_n.jpg?stp=dst-jpg_e15_tt6&amp;_nc_ht=instagram.fhsv1-1.fna.fbcdn.net&amp;_nc_cat=100&amp;_nc_oc=Q6cZ2gEfAkLxQzyxKfcobP7f9zw6vQvjbkXjyC7XaXBYdClyaEoDSc-Y8UWCbwRYtXC7fXI&amp;_nc_ohc=wJDSdoWhM8AQ7kNvwGDMafg&amp;_nc_gid=nX4MWeK4cbN56r0x7CL_Pw&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af_pjfFjIGwRjAAIwfCoMTy9R9PAJMzLLpQzauWrdXG_eg&amp;oe=6A2A11F2&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>🎬</div>
+    <span class='pcard-rank'>#1</span>
+    <span class='pcard-type'>🎬</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤56 💬2</span><span class='pcard-date'>06-02</span></div>
+  <div class='pcard-cap'>너라는 꽃이 피었습니다🌸 청량 그 자체, 온뮤직 남자 아이들의 만세🎵🎵   Full ver. https://</div>
+</div><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZJyxcUkRSU/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://scontent-atl3-3.cdninstagram.com/v/t51.82787-15/714774742_18067248674702820_8781557124291157422_n.jpg?stp=dst-jpg_e15_fr_p1080x1080_tt6&amp;_nc_ht=scontent-atl3-3.cdninstagram.com&amp;_nc_cat=100&amp;_nc_oc=Q6cZ2gHJRoxLp3tepk3WKT-JN04cDhDRh8lmT_4jwBYdOr_Tx5F1LHXC3k0nRBXaOopixPA&amp;_nc_ohc=Kj3sQWuB264Q7kNvwHPtRrG&amp;_nc_gid=68VTWWBlGT-GCfYY38xqOA&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af-3coB1t18rtpiGHk3dZPQfJvPPEFbpenAZkwuy_Vd1BQ&amp;oe=6A2A38EF&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>🖼️</div>
+    <span class='pcard-rank'>#2</span>
+    <span class='pcard-type'>🖼️</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤28 💬0</span><span class='pcard-date'>06-04</span></div>
+  <div class='pcard-cap'>[이ㅇ배 학생 블릭스 합격을 축하합니다!]  [학생 트레이닝 담당 라인업] 총괄 디렉터 : 양창훈 대표 보컬</div>
+</div><div class='pcard' onclick="window.open('https://www.instagram.com/p/DZEsCbgETdi/','_blank')">
+  <div class='pcard-img-wrap'>
+    <img src='https://scontent-dfw5-2.cdninstagram.com/v/t51.82787-15/711687028_18066970457702820_8874783316828486368_n.jpg?stp=dst-jpg_e15_fr_p1080x1080_tt6&amp;_nc_ht=scontent-dfw5-2.cdninstagram.com&amp;_nc_cat=100&amp;_nc_oc=Q6cZ2gEJd8MqlJPE9Q0IFFBrNh3sfwawlN30W0JZzvHQ7D8maI0aDWawsQ21R5gQvRJf0bE&amp;_nc_ohc=kCxnvKXmkuwQ7kNvwEhtQrl&amp;_nc_gid=UDXPp_fXx1hUFsm6TRUPoQ&amp;edm=APs17CUBAAAA&amp;ccb=7-5&amp;oh=00_Af8J7TXA7a4_wamQ5JoehNqp1J7XPUetXbXFd4XgGHvKWQ&amp;oe=6A2A2CC3&amp;_nc_sid=10d13b' onerror="this.style.opacity='0';this.parentElement.classList.add('no-thumb')" loading='lazy'>
+    <div class='fallback-icon'>🖼️</div>
+    <span class='pcard-rank'>#3</span>
+    <span class='pcard-type'>🖼️</span>
+  </div>
+  <div class='pcard-meta'><span class='pcard-eng'>❤16 💬0</span><span class='pcard-date'>06-02</span></div>
+  <div class='pcard-cap'>너라는 꽃이 피었습니다🌸 청량 그 자체, 온뮤직 남자 아이들의 만세🎵🎵   Full ver. https://</div>
+</div></div>
+</div></div></div></div>
+<div id='p-cmp' class='pane'><div class='wrap'><div class='ablock' style='padding:12px;margin-bottom:12px'>
+    <div style='font-size:12px;font-weight:700;color:#FF6B35;margin-bottom:10px'>📊 참여율 순위 (높은 순)</div>
+    <div style='overflow-x:auto'>
+    <table class='cmp-table'>
+      <thead><tr><th>계정</th><th style='text-align:center'>팔로워</th><th style='text-align:center'>참여율</th><th style='text-align:center'>등급</th></tr></thead>
+      <tbody><tr>
+<td><span style='background:#FF6B35;color:#fff;padding:0 4px;border-radius:5px;font-size:9px'>자사</span><br><small style='color:#aaa'>@joydance_japan</small></td>
+<td style='text-align:center'>4.0천</td>
+<td style='text-align:center'>11.58%</td>
+<td style='text-align:center'><span style='background:#10b981;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>A</span></td>
+</tr><tr>
+<td><span style='background:#FF6B35;color:#fff;padding:0 4px;border-radius:5px;font-size:9px'>자사</span><br><small style='color:#aaa'>@joydancemusic_ca</small></td>
+<td style='text-align:center'>853</td>
+<td style='text-align:center'>3.36%</td>
+<td style='text-align:center'><span style='background:#10b981;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>A</span></td>
+</tr><tr>
+<td><span style='background:#FF6B35;color:#fff;padding:0 4px;border-radius:5px;font-size:9px'>자사</span><br><small style='color:#aaa'>@joydancemusic_kh</small></td>
+<td style='text-align:center'>2.7천</td>
+<td style='text-align:center'>3.23%</td>
+<td style='text-align:center'><span style='background:#10b981;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>A</span></td>
+</tr><tr>
+<td><span style='background:#FF6B35;color:#fff;padding:0 4px;border-radius:5px;font-size:9px'>자사</span><br><small style='color:#aaa'>@joydancemusic_mp</small></td>
+<td style='text-align:center'>3.1천</td>
+<td style='text-align:center'>2.06%</td>
+<td style='text-align:center'><span style='background:#f59e0b;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>B</span></td>
+</tr><tr>
+<td><span style='background:#A855F7;color:#fff;padding:0 4px;border-radius:5px;font-size:9px'>경쟁</span><br><small style='color:#aaa'>@mudoctor_official</small></td>
+<td style='text-align:center'>1.2만</td>
+<td style='text-align:center'>0.90%</td>
+<td style='text-align:center'><span style='background:#FF6B35;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>C</span></td>
+</tr><tr>
+<td><span style='background:#A855F7;color:#fff;padding:0 4px;border-radius:5px;font-size:9px'>경쟁</span><br><small style='color:#aaa'>@onmusic_audition</small></td>
+<td style='text-align:center'>4.4천</td>
+<td style='text-align:center'>0.71%</td>
+<td style='text-align:center'><span style='background:#FF6B35;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>C</span></td>
+</tr><tr>
+<td><span style='background:#FF6B35;color:#fff;padding:0 4px;border-radius:5px;font-size:9px'>자사</span><br><small style='color:#aaa'>@joydancemusic_gj</small></td>
+<td style='text-align:center'>1.6천</td>
+<td style='text-align:center'>0.65%</td>
+<td style='text-align:center'><span style='background:#FF6B35;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>C</span></td>
+</tr><tr>
+<td><span style='background:#FF6B35;color:#fff;padding:0 4px;border-radius:5px;font-size:9px'>자사</span><br><small style='color:#aaa'>@joydancemusic_seoul</small></td>
+<td style='text-align:center'>4.7천</td>
+<td style='text-align:center'>0.65%</td>
+<td style='text-align:center'><span style='background:#FF6B35;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>C</span></td>
+</tr><tr>
+<td><span style='background:#A855F7;color:#fff;padding:0 4px;border-radius:5px;font-size:9px'>경쟁</span><br><small style='color:#aaa'>@flat9_official</small></td>
+<td style='text-align:center'>6.6천</td>
+<td style='text-align:center'>0.53%</td>
+<td style='text-align:center'><span style='background:#FF6B35;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>C</span></td>
+</tr><tr>
+<td><span style='background:#A855F7;color:#fff;padding:0 4px;border-radius:5px;font-size:9px'>경쟁</span><br><small style='color:#aaa'>@pivot410studio_bangbae</small></td>
+<td style='text-align:center'>13.5만</td>
+<td style='text-align:center'>0.02%</td>
+<td style='text-align:center'><span style='background:#ef4444;color:#fff;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700'>D</span></td>
+</tr></tbody>
+    </table>
+    </div>
+  </div>
+  <div class='ablock' style='padding:12px'>
+    <div style='font-size:12px;font-weight:700;color:#FF6B35;margin-bottom:10px'>💡 핵심 인사이트</div>
+    <div class='insight-item'>🏆 <div><strong>자사 1위: @joydance_japan 11.58%</strong> — 이 지점 콘텐츠 패턴을 타 지점에 전파 필요.</div></div><div class='insight-item'>⚠️ <div><strong>@joydancemusic_seoul 0.65% 요주의</strong> — 최근 7일 0개 업로드 — 반응 대비 퀄리티 재검토.</div></div><div class='insight-item'>🔍 <div><strong>@pivot410studio_bangbae 팔로워 13.5만, 참여율 0.02%</strong> — 팔로워 수 KPI 무의미 — 참여율 2%+ 목표 유지.</div></div><div class='insight-item'>🎬 <div><strong>mudoctor.global 바이럴 공식</strong> — 합격 발표 릴스 → 팔로워 대비 110% 좋아요. 즉시 따라할 수 있는 포맷.</div></div>
+  </div></div></div>
+<div id='p-bench' class='pane'><div class='wrap'><div style='font-size:11px;color:#666;padding:10px 12px;margin-bottom:12px;background:#0f0f22;border-radius:8px;border:1px solid #1e1e3a'>⭐ 실측 스크래핑 + 리서치로 발굴한 벤치마크</div><div class='bench-block'>
+  <div class='bench-title'>🥇 @mudoctor.global_official</div>
+  <div class='bench-sub'>팔로워 2,008 · 평균참여율 28.5% · 최고 좋아요 2,221개</div>
+  <div class='bench-sec-title'>✅ 핵심 관찰</div>
+  <div class='bench-li'>팔로워보다 많은 좋아요(2,221/2,008) — 오디션 합격 발표 릴스 바이럴</div><div class='bench-li'>Video 포맷 올인 — 게시물 전부 동영상</div><div class='bench-li'>한국어+영어 이중 캡션으로 글로벌 팬 공략</div>
+  <div class='bench-sec-title'>🎯 조이댄스 액션</div>
+  <div class='bench-action'>① 합격 발표 순간 릴스화 — 리얼 반응 30초 편집</div><div class='bench-action'>② Video 비중 80%+ 목표 — 이미지/캐러셀은 알고리즘 열위</div>
+</div><div class='bench-block'>
+  <div class='bench-title'>🥈 @1millionofficial</div>
+  <div class='bench-sub'>구독자 최대 댄스 스튜디오 · K-pop 안무 브랜딩 표준</div>
+  <div class='bench-sec-title'>✅ 핵심 관찰</div>
+  <div class='bench-li'>안무 영상 = 검색 가능한 자산 (곡명+안무가 태깅)</div><div class='bench-li'>강사 개인 브랜딩 → 스튜디오 신뢰로 연결</div>
+  <div class='bench-sec-title'>🎯 조이댄스 액션</div>
+  <div class='bench-action'>① 수업 영상에 곡명·아티스트 해시태그 체계화</div><div class='bench-action'>② 강사별 시그니처 콘텐츠 시리즈 기획</div>
+</div><div class='bench-block'>
+  <div class='bench-title'>⚠️ @pivot410studio_bangbae (반면교사)</div>
+  <div class='bench-sub'>팔로워 13.5만 · 참여율 0.02%</div>
+  <div class='bench-sec-title'>✅ 핵심 관찰</div>
+  <div class='bench-li'>팔로워 수만 크고 반응 없음 — 구매 팔로워/이벤트 유입 추정</div><div class='bench-li'>팔로워 수 KPI의 무의미함을 실증</div>
+  <div class='bench-sec-title'>🎯 조이댄스 액션</div>
+  <div class='bench-action'>① 조이댄스 KPI = 참여율 2%+ 유지 (팔로워 수 아님)</div>
+</div></div></div>
+<div class='footer'>joydance AI suite · igr_runner v1.0</div>
+
+<script>
+function showTab(btn,id){
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on')});
+  document.querySelectorAll('.pane').forEach(function(p){p.classList.remove('on')});
+  btn.classList.add('on');
+  document.getElementById(id).classList.add('on');
+}
+</script>
+
+</body>
+</html>
