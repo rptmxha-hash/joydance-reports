@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>조이댄스 유튜브 분석 2026-06-08</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+     background:#0d0d1a;color:#dde;font-size:14px}
+.hdr{background:linear-gradient(135deg,#2e0a0a,#16213e);
+     padding:14px 14px 10px;border-bottom:3px solid #FF0033}
+.hdr h1{font-size:16px;font-weight:700;color:#FF4455;margin-bottom:2px}
+.hdr .meta{font-size:10px;color:#556}
+.tabs{display:flex;overflow-x:auto;background:#111126;
+      border-bottom:2px solid #222240;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;padding:10px 15px;font-size:12px;font-weight:600;
+     color:#666;background:none;border:none;cursor:pointer;
+     border-bottom:3px solid transparent;white-space:nowrap}
+.tab.on{color:#FF4455;border-bottom-color:#FF0033;background:#16162a}
+.pane{display:none}.pane.on{display:block}
+.wrap{padding:12px 12px 60px;max-width:480px;margin:0 auto}
+.alist{display:block}
+.ablock{background:#111126;border:1px solid #1e1e3a;border-radius:10px;
+        margin-bottom:14px;overflow:hidden}
+.prof-row{display:flex;gap:11px;padding:12px;border-bottom:1px solid #1a1a38;align-items:center}
+.prof-img{width:50px;height:50px;border-radius:50%;object-fit:cover;
+          border:2px solid #FF4455;flex-shrink:0}
+.prof-info{flex:1;min-width:0}
+.prof-handle{font-size:13px;font-weight:700;display:flex;align-items:center;
+             gap:5px;flex-wrap:wrap;margin-bottom:2px;color:#fff}
+.prof-name{font-size:10px;color:#888;margin-bottom:5px;
+           white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:240px}
+.prof-stats{display:flex;flex-wrap:wrap;gap:4px}
+.prof-stats span{font-size:9px;color:#FF8899;background:#1a0a10;
+                 padding:2px 6px;border-radius:8px}
+.section-lbl{padding:7px 12px;font-size:10px;font-weight:600;
+             color:#A855F7;border-top:1px solid #1a1a38;background:#0f0f22}
+.vgrid{display:grid;grid-template-columns:1fr;gap:8px;padding:8px}
+.vcard{background:#0d0d20;border:1px solid #1e1e38;border-radius:6px;
+       overflow:hidden;cursor:pointer;display:flex;gap:8px}
+.vcard:active{opacity:.75}
+.vthumb{position:relative;width:130px;flex-shrink:0;aspect-ratio:16/9;
+        background:#1a0a2e}
+.vthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.vrank{position:absolute;top:3px;left:3px;background:rgba(255,0,51,.85);
+       color:#fff;font-size:8px;font-weight:700;padding:1px 4px;border-radius:5px}
+.vtag{position:absolute;bottom:3px;right:3px;background:rgba(0,0,0,.7);
+      color:#fff;font-size:8px;padding:1px 4px;border-radius:4px}
+.vinfo{padding:6px 8px 6px 0;min-width:0;flex:1}
+.vtitle{font-size:11px;color:#ddd;line-height:1.4;overflow:hidden;
+        display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;margin-bottom:4px}
+.vmeta{font-size:9px;color:#FF6B9D}
+.vdate{font-size:9px;color:#555}
+.cmp-table{width:100%;border-collapse:collapse;font-size:11px}
+.cmp-table th{background:#1a1a38;color:#777;padding:7px 6px;
+              border-bottom:2px solid #2a2a50;white-space:nowrap;text-align:left}
+.cmp-table td{padding:7px 6px;border-bottom:1px solid #1a1a2e;vertical-align:middle;line-height:1.5}
+.insight-item{display:flex;gap:8px;margin-bottom:10px;font-size:11px;
+              color:#bbb;line-height:1.6}
+.hook-block{background:#0f0f22;border:1px solid #1e1e3a;border-radius:10px;
+            padding:12px;margin-bottom:10px}
+.hook-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.hook-metric{font-size:12px;font-weight:700;color:#fff}
+.hook-val{font-size:11px;font-weight:700;padding:1px 8px;border-radius:9px}
+.hook-advice{font-size:10px;color:#aab;line-height:1.6}
+.note-box{font-size:11px;color:#666;padding:10px 12px;margin-bottom:12px;
+          background:#0f0f22;border-radius:8px;border:1px solid #1e1e3a}
+.footer{text-align:center;color:#333;font-size:10px;padding:14px}
+
+body{font-size:15px}
+.hdr h1{font-size:20px}
+.hdr .meta{font-size:12px}
+.tab{font-size:14px;padding:12px 22px}
+.wrap{max-width:1140px;padding:16px 16px 60px}
+.alist{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.alist .ablock{margin-bottom:0}
+.prof-handle{font-size:15px}
+.prof-name{font-size:12px;max-width:420px}
+.prof-stats span{font-size:11px}
+.section-lbl{font-size:12px}
+.vtitle{font-size:13px}
+.vmeta,.vdate{font-size:11px}
+.cmp-table{font-size:13px}
+.insight-item{font-size:13px}
+.hook-metric{font-size:14px}
+.hook-advice{font-size:12px}
+</style>
+</head>
+<body>
+<div class='hdr'>
+  <h1>▶ 조이댄스 유튜브 채널 분석</h1>
+  <div class='meta'>2026-06-08 · 자사1 + 경쟁4 · 30일 기준 · 🖥️ PC · [k-sol]</div>
+</div>
+<div class='tabs'>
+  <button class='tab on' onclick='showTab(this,"p-own")'>🧡 자사</button>
+  <button class='tab' onclick='showTab(this,"p-comp")'>🟣 경쟁사(4)</button>
+  <button class='tab' onclick='showTab(this,"p-cmp")'>📊 비교</button>
+  <button class='tab' onclick='showTab(this,"p-hook")'>🎣 훅 진단</button>
+</div>
+<div id='p-own' class='pane on'><div class='wrap'><div class='alist'><div class='ablock'>
+  <div class='prof-row'>
+    <img src='https://yt3.ggpht.com/M8VIRK6BxvPFe-F-It87sD9CQCGzcLokjrE3i6UGT_oQLQadG305AjkdB5yPLI0DR8GqYDtBmw=s88-c-k-c0x00ffffff-no-rj' class='prof-img' onerror="this.style.visibility='hidden'">
+    <div class='prof-info'>
+      <div class='prof-handle'><span style='color:#FF6B35;font-size:9px'>🧡 자사</span>&nbsp;<strong>조이댄스 공식</strong></div>
+      <div class='prof-name'>조이댄스 뮤직아카데미</div>
+      <div class='prof-stats'>
+        <span>👥 1.1만</span>
+        <span>30일 4개</span>
+        <span>평균 ▶930</span>
+        <span>도달 8.7%</span>
+        <span>참여 1.56%</span>
+        <span>Shorts 75%</span>
+      </div>
+    </div>
+  </div>
+  <div class='section-lbl'>🏆 인기 TOP 3 (최근 30일 기준 4개)</div>
+  <div class='vgrid'><div class='vcard' onclick="window.open('https://www.youtube.com/watch?v=sMm7X14-sJk','_blank')">
+  <div class='vthumb'>
+    <img src='https://i.ytimg.com/vi/sMm7X14-sJk/mqdefault.jpg' loading='lazy'>
+    <span class='vrank'>#1</span>
+    <span class='vtag'>Shorts</span>
+  </div>
+  <div class='vinfo'>
+    <div class='vtitle'>[거울 앞을 넘어, 진짜 무대를 부숴버릴 듯한 이 텐션!!] [보이넥스트도어] - [똑똑똑] 댄스 커버 | 조이댄스 강남점 #shorts #오디션준비</div>
+    <div class='vmeta'>▶1.8천 ❤29 💬2</div>
+    <div class='vdate'>06-01</div>
+  </div>
+</div><div class='vcard' onclick="window.open('https://www.youtube.com/watch?v=P0EanI-FYls','_blank')">
+  <div class='vthumb'>
+    <img src='https://i.ytimg.com/vi/P0EanI-FYls/mqdefault.jpg' loading='lazy'>
+    <span class='vrank'>#2</span>
+    <span class='vtag'>Shorts</span>
+  </div>
+  <div class='vinfo'>
+    <div class='vtitle'>[시선 강탈! 첫 3초 만에 렌즈를 사로잡는 나만의 유니크한 매력] [아일릿] - [It&#39;s Me] 댄스 커버 | 조이댄스 강남점 #shorts #오디션준비</div>
+    <div class='vmeta'>▶1.4천 ❤12 💬0</div>
+    <div class='vdate'>06-01</div>
+  </div>
+</div><div class='vcard' onclick="window.open('https://www.youtube.com/watch?v=KA3fGIwMn84','_blank')">
+  <div class='vthumb'>
+    <img src='https://i.ytimg.com/vi/KA3fGIwMn84/mqdefault.jpg' loading='lazy'>
+    <span class='vrank'>#3</span>
+    <span class='vtag'>Shorts</span>
+  </div>
+  <div class='vinfo'>
+    <div class='vtitle'>[리듬감을 지배하는 텐션!!] [Confidence Man] - [ALL MY PEOPLE (Edit)] 왁킹 클래스 | 조이댄스 [천안점] #shorts #오디션준비</div>
+    <div class='vmeta'>▶291 ❤2 💬0</div>
+    <div class='vdate'>05-23</div>
+  </div>
+</div></div>
+</div></div></div></div>
+<div id='p-comp' class='pane'><div class='wrap'><div class='alist'><div class='ablock'>
+  <div class='prof-row'>
+    <img src='https://yt3.ggpht.com/JIkLuzuGyHxquWmPQ5uCVZh0O3C0Xj50keQDJ2f1KsruWMo5bQJz9PbBIyqXutp7z5twxK_NlQ=s88-c-k-c0x00ffffff-no-rj' class='prof-img' onerror="this.style.visibility='hidden'">
+    <div class='prof-info'>
+      <div class='prof-handle'><span style='color:#A855F7;font-size:9px'>🟣 경쟁</span>&nbsp;<strong>뮤닥터</strong></div>
+      <div class='prof-name'>MUDOCTOR ACADEMY - 뮤닥터아카데미 오디션학원</div>
+      <div class='prof-stats'>
+        <span>👥 6.7만</span>
+        <span>30일 50개</span>
+        <span>평균 ▶1.1천</span>
+        <span>도달 1.7%</span>
+        <span>참여 0.07%</span>
+        <span>Shorts 10%</span>
+      </div>
+    </div>
+  </div>
+  <div class='section-lbl'>🏆 인기 TOP 3 (최근 30일 기준 50개)</div>
+  <div class='vgrid'><div class='vcard' onclick="window.open('https://www.youtube.com/watch?v=YhVhL5QRhEw','_blank')">
+  <div class='vthumb'>
+    <img src='https://i.ytimg.com/vi/YhVhL5QRhEw/mqdefault.jpg' loading='lazy'>
+    <span class='vrank'>#1</span>
+    <span class='vtag'>49:42</span>
+  </div>
+  <div class='vinfo'>
+    <div class='vtitle'>We Filmed 7 Days Inside a Real K-POP Audition | K-POP Audition Camp | MUDOCTOR</div>
+    <div class='vmeta'>▶1.5만 ❤– 💬33</div>
+    <div class='vdate'>05-26</div>
+  </div>
+</div><div class='vcard' onclick="window.open('https://www.youtube.com/watch?v=pcGiE7c-yPc','_blank')">
+  <div class='vthumb'>
+    <img src='https://i.ytimg.com/vi/pcGiE7c-yPc/mqdefault.jpg' loading='lazy'>
+    <span class='vrank'>#2</span>
+    <span class='vtag'>Shorts</span>
+  </div>
+  <div class='vinfo'>
+    <div class='vtitle'>오디션 캐스팅 1위 기관 뮤닥터아카데미 아이돌지망✨️#kiiikiii #키키 #delulu   #뮤닥터아카데미 뮤닥터 #아이돌지망생 #오디션전문학원 #강남댄스학원 댄스학원</div>
+    <div class='vmeta'>▶2.1천 ❤– 💬0</div>
+    <div class='vdate'>05-18</div>
+  </div>
+</div><div class='vcard' onclick="window.open('https://www.youtube.com/watch?v=l5L9wUr-XXY','_blank')">
+  <div class='vthumb'>
+    <img src='https://i.ytimg.com/vi/l5L9wUr-XXY/mqdefault.jpg' loading='lazy'>
+    <span class='vrank'>#3</span>
+    <span class='vtag'>Shorts</span>
+  </div>
+  <div class='vinfo'>
+    <div class='vtitle'>💥뮤닥터 올인원캐스팅 변경! 📅 2026 썸머 75개 기획사 참여 예정 ✔🏆 138명+ 아이돌 배출 🔔 5/26 신규생 등록 오픈 #뮤닥터 #연합오디션 #아이돌오디션 #아이돌지망생</div>
+    <div class='vmeta'>▶2.0천 ❤– 💬0</div>
+    <div class='vdate'>05-21</div>
+  </div>
+</div></div>
+</div><div class='ablock'>
+  <div class='prof-row'>
+    <img src='https://yt3.ggpht.com/ytc/AIdro_ltJ_FaJo1KpKbc0wiOGuGh8gSftX1k3gGR-TyML7ZEytY=s88-c-k-c0x00ffffff-no-rj' class='prof-img' onerror="this.style.visibility='hidden'">
+    <div class='prof-info'>
+      <div class='prof-handle'><span style='color:#A855F7;font-size:9px'>🟣 경쟁</span>&nbsp;<strong>플랫나인</strong></div>
+      <div class='prof-name'>FLAT9 Dance&amp;Vocal Academy</div>
+      <div class='prof-stats'>
+        <span>👥 9.4천</span>
+        <span>30일 16개</span>
+        <span>평균 ▶2.5천</span>
+        <span>도달 26.3%</span>
+        <span>참여 2.13%</span>
+        <span>Shorts 44%</span>
+      </div>
+    </div>
+  </div>
+  <div class='section-lbl'>🏆 인기 TOP 3 (최근 30일 기준 16개)</div>
+  <div class='vgrid'><div class='vcard' onclick="window.open('https://www.youtube.com/watch?v=5RizuSeguGY','_blank')">
+  <div class='vthumb'>
+    <img src='https://i.ytimg.com/vi/5RizuSeguGY/mqdefault.jpg' loading='lazy'>
+    <span class='vrank'>#1</span>
+    <span class='vtag'>Shorts</span>
+  </div>
+  <div class='vinfo'>
+    <div class='vtitle'>BOYNEXTDOOR (보이넥스트도어) &#39;똑똑똑&#39; 안무 Practice #shorts</div>
+    <div class='vmeta'>▶1.2만 ❤143 💬4</div>
+    <div class='vdate'>05-21</div>
+  </div>
+</div><div class='vcard' onclick="window.open('https://www.youtube.com/watch?v=8z6XrJctHAc','_blank')">
+  <div class='vthumb'>
+    <img src='https://i.ytimg.com/vi/8z6XrJctHAc/mqdefault.jpg' loading='lazy'>
+    <span class='vrank'>#2</span>
+    <span class='vtag'>Shorts</span>
+  </div>
+  <div class='vinfo'>
+    <div class='vtitle'>aespa 에스파 &#39;WDA (Whole Different Animal)  dance cover #shorts</div>
+    <div class='vmeta'>▶6.1천 ❤93 💬1</div>
+    <div class='vdate'>05-16</div>
+  </div>
+</div><div class='vcard' onclick="window.open('https://www.youtube.com/watch?v=Qo2FwwgH6h4','_blank')">
+  <div class='vthumb'>
+    <img src='https://i.ytimg.com/vi/Qo2FwwgH6h4/mqdefault.jpg' loading='lazy'>
+    <span class='vrank'>#3</span>
+    <span class='vtag'>Shorts</span>
+  </div>
+  <div class='vinfo'>
+    <div class='vtitle'>aespa 에스파 &#39;WDA&#39; (Whole Different Animal) Practice | 안무 연습영상 #shorts</div>
+    <div class='vmeta'>▶4.2천 ❤25 💬0</div>
+    <div class='vdate'>05-19</div>
+  </div>
+</div></div>
+</div><div class='ablock'>
+  <div class='prof-row'>
+    <img src='https://yt3.ggpht.com/FYIU9l1qeY_jD1LCta8Qqz7pwSkojVFvpwX7ZZjjTciTqFdjHNepcEdmZQOf-3pekbmNdTsjdQ=s88-c-k-c0x00ffffff-no-rj' class='prof-img' onerror="this.style.visibility='hidden'">
+    <div class='prof-info'>
+      <div class='prof-handle'><span style='color:#A855F7;font-size:9px'>🟣 경쟁</span>&nbsp;<strong>모던K 오디션</strong></div>
+      <div class='prof-name'>모던K 실용음악학원 MODERNK AUDITION</div>
+      <div class='prof-stats'>
+        <span>👥 2.2천</span>
+        <span>30일 5개</span>
+        <span>평균 ▶5.4천</span>
+        <span>도달 248.6%</span>
+        <span>참여 0.28%</span>
+        <span>Shorts 20%</span>
+      </div>
+    </div>
+  </div>
+  <div class='section-lbl'>🏆 인기 TOP 3 (최근 30일 기준 5개)</div>
+  <div class='vgrid'><div class='vcard' onclick="window.open('https://www.youtube.com/watch?v=DSBKkXB21oI','_blank')">
+  <div class='vthumb'>
+    <img src='https://i.ytimg.com/vi/DSBKkXB21oI/mqdefault.jpg' loading='lazy'>
+    <span class='vrank'>#1</span>
+    <span class='vtag'>1:55</span>
+  </div>
+  <div class='vinfo'>
+    <div class='vtitle'>🌟아이돌 가수 지망생들의 16주간의 여정 [모던K 2026 A.G.P PART.1] 전체 2차 중간평가 현장 하이라이트🔥</div>
+    <div class='vmeta'>▶1.2만 ❤8 💬0</div>
+    <div class='vdate'>05-14</div>
+  </div>
+</div><div class='vcard' onclick="window.open('https://www.youtube.com/watch?v=GZeS-826S0k','_blank')">
+  <div class='vthumb'>
+    <img src='https://i.ytimg.com/vi/GZeS-826S0k/mqdefault.jpg' loading='lazy'>
+    <span class='vrank'>#2</span>
+    <span class='vtag'>2:47</span>
+  </div>
+  <div class='vinfo'>
+    <div class='vtitle'>🏆월말평가 보컬 우수자🏆 🎤이클립스 (ECLIPSE) - 소나기 (Sudden Shower)🌧️｜VOCAL COVER BY YONGJOON💧‍</div>
+    <div class='vmeta'>▶5.4천 ❤16 💬1</div>
+    <div class='vdate'>05-26</div>
+  </div>
+</div><div class='vcard' onclick="window.open('https://www.youtube.com/watch?v=jk7SIbaBNx0','_blank')">
+  <div class='vthumb'>
+    <img src='https://i.ytimg.com/vi/jk7SIbaBNx0/mqdefault.jpg' loading='lazy'>
+    <span class='vrank'>#3</span>
+    <span class='vtag'>1:04</span>
+  </div>
+  <div class='vinfo'>
+    <div class='vtitle'>🏆월말평가 댄스 우수자🏆 💎카리나 (KARINA of aespa) - UP👑｜DANCE COVER BY JIWOO🔥‍</div>
+    <div class='vmeta'>▶4.5천 ❤9 💬0</div>
+    <div class='vdate'>05-26</div>
+  </div>
+</div></div>
+</div><div class='ablock'>
+  <div class='prof-row'>
+    <img src='https://yt3.ggpht.com/GIdwcpAh62v63hM78S2RO0dy74qSVHs72kNlluDzSSCTkFUe34XDQSTrpxSKSJDOmgUHdiiGkw=s88-c-k-c0x00ffffff-no-rj' class='prof-img' onerror="this.style.visibility='hidden'">
+    <div class='prof-info'>
+      <div class='prof-handle'><span style='color:#A855F7;font-size:9px'>🟣 경쟁</span>&nbsp;<strong>1MILLION</strong></div>
+      <div class='prof-name'>1MILLION Dance Studio</div>
+      <div class='prof-stats'>
+        <span>👥 2640.0만</span>
+        <span>30일 35개</span>
+        <span>평균 ▶2.3만</span>
+        <span>도달 0.1%</span>
+        <span>참여 2.38%</span>
+        <span>Shorts 80%</span>
+      </div>
+    </div>
+  </div>
+  <div class='section-lbl'>🏆 인기 TOP 3 (최근 30일 기준 35개)</div>
+  <div class='vgrid'><div class='vcard' onclick="window.open('https://www.youtube.com/watch?v=TEd6ZNl3PHI','_blank')">
+  <div class='vthumb'>
+    <img src='https://i.ytimg.com/vi/TEd6ZNl3PHI/mqdefault.jpg' loading='lazy'>
+    <span class='vrank'>#1</span>
+    <span class='vtag'>Shorts</span>
+  </div>
+  <div class='vinfo'>
+    <div class='vtitle'>So many QUEENS 👑💅 #harimu #choreography #lagqueen</div>
+    <div class='vmeta'>▶8.7만 ❤1.1천 💬6</div>
+    <div class='vdate'>05-13</div>
+  </div>
+</div><div class='vcard' onclick="window.open('https://www.youtube.com/watch?v=HfzvJ_VoObQ','_blank')">
+  <div class='vthumb'>
+    <img src='https://i.ytimg.com/vi/HfzvJ_VoObQ/mqdefault.jpg' loading='lazy'>
+    <span class='vrank'>#2</span>
+    <span class='vtag'>Shorts</span>
+  </div>
+  <div class='vinfo'>
+    <div class='vtitle'>Laglaglaglag Queen 👑❤️‍🔥 @harimuuu #choreography #lagqueen</div>
+    <div class='vmeta'>▶8.4만 ❤1.4천 💬10</div>
+    <div class='vdate'>05-12</div>
+  </div>
+</div><div class='vcard' onclick="window.open('https://www.youtube.com/watch?v=y0ZwNEMjDac','_blank')">
+  <div class='vthumb'>
+    <img src='https://i.ytimg.com/vi/y0ZwNEMjDac/mqdefault.jpg' loading='lazy'>
+    <span class='vrank'>#3</span>
+    <span class='vtag'>Shorts</span>
+  </div>
+  <div class='vinfo'>
+    <div class='vtitle'>The energy was crazy ❤️‍🔥@harimuuu  #choreograhy #lagqueen</div>
+    <div class='vmeta'>▶6.2만 ❤1.7천 💬10</div>
+    <div class='vdate'>05-13</div>
+  </div>
+</div></div>
+</div></div></div></div>
+<div id='p-cmp' class='pane'><div class='wrap'><div class='ablock' style='padding:12px;margin-bottom:12px'>
+    <div style='font-size:12px;font-weight:700;color:#FF4455;margin-bottom:10px'>📊 채널 비교 (도달율 순)</div>
+    <div style='overflow-x:auto'>
+    <table class='cmp-table'>
+      <thead><tr><th>채널</th><th style='text-align:center'>구독자</th><th style='text-align:center'>30일</th><th style='text-align:center'>평균조회</th><th style='text-align:center'>도달</th><th style='text-align:center'>참여</th></tr></thead>
+      <tbody><tr>
+<td><span style='background:#A855F7;color:#fff;padding:0 4px;border-radius:5px;font-size:9px'>경쟁</span><br><small style='color:#aaa'>모던K 오디션</small></td>
+<td style='text-align:center'>2.2천</td>
+<td style='text-align:center'>5</td>
+<td style='text-align:center'>5.4천</td>
+<td style='text-align:center'>248.6%</td>
+<td style='text-align:center'>0.28%</td>
+</tr><tr>
+<td><span style='background:#A855F7;color:#fff;padding:0 4px;border-radius:5px;font-size:9px'>경쟁</span><br><small style='color:#aaa'>플랫나인</small></td>
+<td style='text-align:center'>9.4천</td>
+<td style='text-align:center'>16</td>
+<td style='text-align:center'>2.5천</td>
+<td style='text-align:center'>26.3%</td>
+<td style='text-align:center'>2.13%</td>
+</tr><tr>
+<td><span style='background:#FF6B35;color:#fff;padding:0 4px;border-radius:5px;font-size:9px'>자사</span><br><small style='color:#aaa'>조이댄스 공식</small></td>
+<td style='text-align:center'>1.1만</td>
+<td style='text-align:center'>4</td>
+<td style='text-align:center'>930</td>
+<td style='text-align:center'>8.7%</td>
+<td style='text-align:center'>1.56%</td>
+</tr><tr>
+<td><span style='background:#A855F7;color:#fff;padding:0 4px;border-radius:5px;font-size:9px'>경쟁</span><br><small style='color:#aaa'>뮤닥터</small></td>
+<td style='text-align:center'>6.7만</td>
+<td style='text-align:center'>50</td>
+<td style='text-align:center'>1.1천</td>
+<td style='text-align:center'>1.7%</td>
+<td style='text-align:center'>0.07%</td>
+</tr><tr>
+<td><span style='background:#A855F7;color:#fff;padding:0 4px;border-radius:5px;font-size:9px'>경쟁</span><br><small style='color:#aaa'>1MILLION</small></td>
+<td style='text-align:center'>2640.0만</td>
+<td style='text-align:center'>35</td>
+<td style='text-align:center'>2.3만</td>
+<td style='text-align:center'>0.1%</td>
+<td style='text-align:center'>2.38%</td>
+</tr></tbody>
+    </table>
+    </div>
+  </div>
+  <div class='ablock' style='padding:12px'>
+    <div style='font-size:12px;font-weight:700;color:#FF4455;margin-bottom:10px'>💡 핵심 인사이트</div>
+    <div class='insight-item'>📡 <div><strong>구독자 대비 도달: 자사 8.7% vs 최고 모던K 오디션 248.6%</strong> — 도달(VPS)=평균조회/구독자. 구독자 규모와 무관한 공정 비교 지표.</div></div><div class='insight-item'>📤 <div><strong>업로드 최다: 뮤닥터 30일 50개 (자사 4개)</strong> — 물량 자체보다 떡상 포맷 반복이 핵심 — 훅 탭 참고.</div></div><div class='insight-item'>🔥 <div><strong>경쟁 떡상: 1MILLION &#39;PRODUCE 101 JAPAN 新世界 / E&#39; 4.4만회 (롱폼)</strong> — 이 포맷을 조이댄스 버전으로 2주 내 테스트.</div></div>
+  </div></div></div>
+<div id='p-hook' class='pane'><div class='wrap'><div class='note-box'>🎣 MrBeast 훅 공식 기반 진단 — 첫 3초 결과 선공개 · 스테이크 명시 · 오픈 루프 · 썸네일-제목 일치 · 대비 구조. 대상: 조이댄스 뮤직아카데미 (최근 30일)</div><div class='hook-block'>
+  <div class='hook-head'>
+    <span class='hook-metric'>✅ Shorts 비중</span>
+    <span class='hook-val' style='background:#10b981;color:#fff'>75%</span>
+  </div>
+  <div class='hook-advice'>Shorts 중심 운영 양호 — 첫 3초 결과 선공개 유지.</div>
+</div><div class='hook-block'>
+  <div class='hook-head'>
+    <span class='hook-metric'>⚠️ 제목 숫자 포함률</span>
+    <span class='hook-val' style='background:#ef4444;color:#fff'>40%</span>
+  </div>
+  <div class='hook-advice'>MrBeast 공식: 구체적 숫자가 스테이크를 만든다 (예: '3개월 만에', '7개 기획사'). 50%+ 권장.</div>
+</div><div class='hook-block'>
+  <div class='hook-head'>
+    <span class='hook-metric'>⚠️ 스테이크 단어 포함률</span>
+    <span class='hook-val' style='background:#ef4444;color:#fff'>20%</span>
+  </div>
+  <div class='hook-advice'>합격·데뷔·최초·결과 등 이해관계 단어가 클릭 동기. 제목 앞 10자 안에 배치.</div>
+</div><div class='hook-block'>
+  <div class='hook-head'>
+    <span class='hook-metric'>✅ 떡상 패턴</span>
+    <span class='hook-val' style='background:#10b981;color:#fff'>1개 (최고 1.8천회)</span>
+  </div>
+  <div class='hook-advice'>떡상 1위 '[거울 앞을 넘어, 진짜 무대를 부숴버릴 듯한 이 텐션' = Shorts. 같은 포맷·같은 훅 구조로 2주 내 후속 제작.</div>
+</div><div class='hook-block'>
+  <div class='hook-head'>
+    <span class='hook-metric'>📋 썸네일-제목 일치 (수동 체크)</span>
+    <span class='hook-val' style='background:#f59e0b;color:#fff'>—</span>
+  </div>
+  <div class='hook-advice'>MrBeast 원칙: 썸네일에서 본 장면이 영상 초반 등장해야 이탈 방지. 발행 전 체크리스트로 운영.</div>
+</div></div></div>
+<div class='footer'>joydance AI suite · ytr_runner v1.0</div>
+
+<script>
+function showTab(btn,id){
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on')});
+  document.querySelectorAll('.pane').forEach(function(p){p.classList.remove('on')});
+  btn.classList.add('on');
+  document.getElementById(id).classList.add('on');
+}
+</script>
+
+</body>
+</html>
